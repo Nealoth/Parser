@@ -1,34 +1,30 @@
 package parser;
 
-
-import parser.parser.CssParser;
+import parser.css.CssParser;
+import parser.css.PlainCssParser;
+import parser.css.model.CssDocument;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        CssParser cssParser = new CssParser();
+        CssParser plainCssParser = new PlainCssParser();
 
         try (FileInputStream inputStream = new FileInputStream("src/main/resources/test.css")) {
-            byte []a = new byte[inputStream.available()];
+            byte[] a = new byte[inputStream.available()];
+
             inputStream.read(a);
 
             for (byte b : a) {
                 char ch = (char) b;
-                if (!Character.isWhitespace(ch)) {
-                    stringBuilder.append(ch);
-                }
+                stringBuilder.append(ch);
             }
 
-            HashMap<String, String> parsed = cssParser.parse(stringBuilder.toString());
-
-            parsed.forEach((s, s2) -> System.out.println(s + " " + s2 + "\n"));
-
+            CssDocument parsed = plainCssParser.parse(stringBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

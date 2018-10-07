@@ -1,51 +1,67 @@
 package parser.css.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CssBlock {
 
-    private String plainCssProperties;
+	private String plainCss;
 
-    private Map<String, String> mappedCssProperties;
+	private String plainName;
 
-    private String selectorName;
+	private final List<CssSelector> selectors = new ArrayList<>();
 
-    public CssBlock(String selectorName, String plainCss) {
-        this.plainCssProperties = plainCss;
-        this.selectorName = selectorName;
-        this.mappedCssProperties = tryToParseCssProperties(plainCss);
-    }
+	private int childrenCount;
 
-    public String getPlainCssProperties() {
-        return plainCssProperties;
-    }
+	private final List<CssBlock> children = new ArrayList<>();
 
-    public String getSelectorName() {
-        return selectorName;
-    }
+	private CssBlock parent;
 
-    public Map<String, String> getMappedCssProperties() {
-        return mappedCssProperties;
-    }
+	private final Map<String, String> properties = new HashMap<>();
 
-    private Map<String, String> tryToParseCssProperties(String plainCss) {
+	public String getPlainCss() {
+		return plainCss;
+	}
 
-        plainCss = plainCss.trim()
-                .replace("{", "")
-                .replace("}", "");
+	public void setPlainCss(String plainCss) {
+		this.plainCss = plainCss;
+	}
 
-        String[] split = plainCss.split(";");
+	public int getChildrenCount() {
+		return childrenCount;
+	}
 
-        for (String s : split) {
-            System.out.println(s);
-        }
-        return null;
-    }
+	public void setChildrenCount(int childrenCount) {
+		this.childrenCount = childrenCount;
+	}
 
-    @Override
-    public String toString() {
-        return "CssBlock{" +
-                "plainCssProperties='" + plainCssProperties + '\'' +
-                '}';
-    }
+	public List<CssBlock> getChildren() {
+		return children;
+	}
+
+	public CssBlock getParent() {
+		return parent;
+	}
+
+	public void setParent(CssBlock parent) {
+		this.parent = parent;
+	}
+
+	public String getPlainName() {
+		return plainName;
+	}
+
+	public void setPlainName(String plainName) {
+		this.plainName = plainName;
+	}
+
+	public Map<String, String> getProperties() {
+		return properties;
+	}
+
+	public List<CssSelector> getSelectors() {
+		return selectors;
+	}
 }

@@ -5,18 +5,18 @@ import java.util.List;
 public class CssSelector {
 
 	private final String plainName;
-	private final CssSelectorType type;
+	private final CssSelectorType types;
 	private final List<CssSelector> children;
 
-	public CssSelector(String plainName, CssSelectorType type) {
+	public CssSelector(String plainName, CssSelectorType types) {
 		this.plainName = plainName;
-		this.type = type;
+		this.types = types;
 		this.children = null;
 	}
 
-	public CssSelector(String plainName, CssSelectorType type, List<CssSelector> children) {
+	public CssSelector(String plainName, CssSelectorType types, List<CssSelector> children) {
 		this.plainName = plainName;
-		this.type = type;
+		this.types = types;
 		this.children = children;
 	}
 
@@ -24,7 +24,7 @@ public class CssSelector {
 		return plainName;
 	}
 
-	public CssSelectorType getType() {
-		return type;
+	public CssSelectorType getTypes() {
+		return types;
 	}
 }

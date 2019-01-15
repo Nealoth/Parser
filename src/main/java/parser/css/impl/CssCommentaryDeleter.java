@@ -4,7 +4,7 @@ import parser.css.CommentaryDeleter;
 
 import java.util.ArrayList;
 
-public class CssCommentaryDeleter implements CommentaryDeleter {
+class CssCommentaryDeleter implements CommentaryDeleter {
 
 	public String deleteMultiLineComments(String plainCss) {
 

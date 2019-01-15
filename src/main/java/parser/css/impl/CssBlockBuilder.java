@@ -5,7 +5,7 @@ import parser.css.model.CssBlock;
 
 import java.util.*;
 
-public class CssBlockBuilder implements BlockBuilder {
+class CssBlockBuilder implements BlockBuilder {
 
 	private final CssSelectorBuilder cssSelectorBuilder = new CssSelectorBuilder();
 

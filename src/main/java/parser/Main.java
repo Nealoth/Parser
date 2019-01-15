@@ -12,7 +12,6 @@ public class Main {
 
 		StringBuilder stringBuilder = new StringBuilder();
 
-
 		CssParser plainCssParser = new PlainCssParser();
 
 		try (FileInputStream inputStream = new FileInputStream("src/main/resources/test.css")) {

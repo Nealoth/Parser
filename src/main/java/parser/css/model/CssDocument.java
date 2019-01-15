@@ -1,20 +1,23 @@
 package parser.css.model;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CssDocument {
 
-    private final Map<String, CssBlock> selectorMap =  new HashMap<>();
+    private final Map<String, CssBlock> selectorMap;
+    private final Map<String, List<CssBlock>> associationsMap;
 
-    private final Map<String, String> selectorAssociations = new HashMap<>();
+	public CssDocument(Map<String, CssBlock> selectorsMap, Map<String, List<CssBlock>> associationsMap) {
+		this.selectorMap = selectorsMap;
+		this.associationsMap = associationsMap;
+	}
 
 	public Map<String, CssBlock> getSelectorMap() {
 		return selectorMap;
 	}
 
-	public Map<String, String> getSelectorAssociations() {
-		return selectorAssociations;
+	public Map<String, List<CssBlock>> getAssociationsMap() {
+		return associationsMap;
 	}
-
 }
